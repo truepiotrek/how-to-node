@@ -2,17 +2,14 @@ const express = require('express');
 
 const app = express();
 
-app.use(( req, res, next ) => {
-  console.log("...booting");
-  next();
-})
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop')
 
-app.use('/add-product', ( req, res, next ) => {
-  res.send("<h1>This is 'Add product' page</h1>")
-})
+const bodyParser = require('body-parser');
 
-app.use('/', ( req, res, next ) => {
-  res.send("<h1>Main page</h1>")
-})
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(adminRoutes);
+app.use(shopRoutes);
 
 app.listen(3000)
