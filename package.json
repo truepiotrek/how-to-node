@@ -1,0 +1,26 @@
+{
+  "name": "node-js-project",
+  "version": "1.0.0",
+  "description": "Learning new stuff",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truepiotrek/how-to-node.git"
+  },
+  "author": "Piotr Slezak <piotrek.slezak@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truepiotrek/how-to-node/issues"
+  },
+  "homepage": "https://github.com/truepiotrek/how-to-node#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
