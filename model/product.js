@@ -10,9 +10,10 @@ const p = path.join(
 const getProductsFromFile = (callbackFn) => {
   fs.readFile(p, (error, fileContent) => {
     if (error) {
-      return callbackFn([]);
+      callbackFn([]);
+    } else {
+      callbackFn(JSON.parse(fileContent));
     }
-    callbackFn(JSON.parse(fileContent));
   });
 };
 
@@ -25,6 +26,7 @@ module.exports = class Product {
   }
 
   save() {
+    this.id = Math.random().toString();
     getProductsFromFile((products) => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (error) => {
@@ -35,5 +37,12 @@ module.exports = class Product {
 
   static fetchAll(callbackFn) {
     getProductsFromFile(callbackFn);
+  }
+
+  static findById(id, callbackFn) {
+    getProductsFromFile((products) => {
+      const product = products.find((p) => p.id === id);
+      callbackFn(product);
+    });
   }
 };
